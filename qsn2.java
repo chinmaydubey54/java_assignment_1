@@ -1,15 +1,9 @@
+
 import java.util.Scanner;
 
-import javax.sql.rowset.spi.SyncResolver;
 
-class circle{
-        void area(int r){
-            System.out.println(Math.PI*r*r);
-        }
-        void perimeter(int r){
-            System.out.println(2*Math.PI*r);
-        }
-    }
+
+
    
     
     class rectangle{
@@ -22,11 +16,12 @@ class circle{
     }
 
     class triangle{
-        public void area(int h,int b){
-            System.out.println(0.5*h*b);
+        public void area(double a,double b,double c){
+            double s=(a+b+c)/(double)2;
+            System.out.println(Math.sqrt(s*(s-a)*(s-b)*(s-c)));
         }
-       public  void perimeter(int l,int b){
-            System.out.println(2*(l+b));
+       public  void perimeter(double a,double b,double c){
+            System.out.println(a+b+c);
         }
     }
     class square{
@@ -37,37 +32,55 @@ class circle{
             System.out.println(4*a);
         }
     }
+
+    class circle{
+        public int r;
+     
+         public circle(int a){
+             r=a;
+     
+         }
+             double area(){
+                 return (Math.PI*r*r);
+             }
+             double perimeter(){
+                 return (2*Math.PI*r);
+             }
+         }
     class sphere extends circle{
-        void area(int r){
-            System.out.println(4*Math.PI*r*r);
+        public sphere(){
+            super(a);
         }
        
         
-       public  void volume(int r){
-            System.out.println((4/3)*Math.PI*r*r*r);
+         double area(){
+            return area()*4;
+        }
+       
+        
+       public  double volume(){
+            return ((4/3)*area()*r);
         }
     }
     class cylinder extends circle{
-        void area(int r, int h){
-            System.out.println((2+h)*Math.PI*r*r); 
+        public cylinder (int a, int h){
+            super(a);
+            height=h;
+        }
+        double area(){
+            return (2+h)*area(); 
         }
        
         
-       public  void volume(int r,int h){
-            System.out.println(Math.PI*r*r*h);
+       public  double volume(){
+            return (area()*h);
         }
     }
 class qsn2{
 
     public static void main(String[] args) {
-        System.out.println("Select the shape to calculate area and perimeters for :")
-        System.out.println("1:Circle");
-        System.out.println("2:Rectangle");
-        System.out.println("3:Triangle");
-        System.out.println("4:Square");
-        System.out.println("5:Sphere");
-        System.out.println("6:Cylinder");
-        System.out.println("7:exit");
+        System.out.println("Select the shape to calculate area and perimeters for :  \n 1:Circle \n 2:Rectangle \n 3:Triangle \n 4:Square \n 5:Sphere  \n 6:Cylinder  \n 7:exit  ");
+      
        
         
 
@@ -87,13 +100,20 @@ class qsn2{
                 int l=sc.nextInt();
                 int b=sc.nextInt();
                 rectangle t=new rectangle();
+                
                 t.area(l,b);
                 t.perimeter(l,b);
 
                 
                 break;
                 case 3:
-                    
+                double p=sc.nextDouble();
+                double q=sc.nextDouble();
+                double z=sc.nextDouble();
+                triangle v=new triangle();
+                v.area(p, q, z);
+
+
                 break;
                 case 4:
                     
@@ -102,11 +122,14 @@ class qsn2{
                 
                 break;
                 case 6:
+                cylinder cyl=new cylinder(10, 10);
+                System.out.println(cyl.area());
+                System.out.println(cyl.volume());
                     
                 break;
                 case 7:
-                    
-                break;
+                    return;
+                
                 
                 
             }
